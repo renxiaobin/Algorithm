@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * 定义magic操作，使得从一个数组移动一个元素到另一个数组后，两个数组的均值都增加
+ * 不能移动数组已包含的元素
+ */
 public class Solution4 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -29,6 +33,13 @@ public class Solution4 {
 
     }
 
+    /**
+     * 只移动数组b中比均值小的，且比a的均值大的元素到数组a中
+     * 每移动一次，求一次新的均值
+     * @param a
+     * @param b
+     * @return
+     */
     public static int magic(int[] a, int[] b) {
         Arrays.sort(a);
         Arrays.sort(b);
@@ -53,7 +64,7 @@ public class Solution4 {
             if (b[i]>avg_a && b[i]<avg_b && !alist.contains(b[i])) {
                 times++;
                 avg_a=(double)(avg_a*alist.size()+b[i])/(double)(alist.size()+1);
-
+                alist.add(b[i]);
                 avg_b=(double)(avg_b*m-b[i])/(double)(m-1);
                 m=m-1;
             }else {
