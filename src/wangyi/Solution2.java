@@ -2,6 +2,9 @@ package wangyi;
 
 import java.util.Scanner;
 
+/**
+ * 找出x，y都不大于n，且x除以y的余数大于k的所有数对
+ */
 public class Solution2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

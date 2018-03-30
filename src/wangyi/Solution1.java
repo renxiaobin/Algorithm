@@ -23,6 +23,8 @@ public class Solution1 {
             y2[i]=scanner.nextInt();
         }
 
+        int f[][] = new int[200][200];
+
         int result=1;
         for (int i = 0; i < n; i++) {
             for (int j = i+1; j < n; j++) {

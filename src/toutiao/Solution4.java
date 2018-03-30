@@ -23,29 +23,10 @@ public class Solution4 {
             b[i]=scanner.nextInt();
         }
 
-        if(a.length>b.length){
-            int temp[] = a;
-            a=b;
-            b=temp;
-        }
-
-        System.out.println(magic(a,b));
-
-    }
-
-    /**
-     * 只移动数组b中比均值小的，且比a的均值大的元素到数组a中
-     * 每移动一次，求一次新的均值
-     * @param a
-     * @param b
-     * @return
-     */
-    public static int magic(int[] a, int[] b) {
         Arrays.sort(a);
         Arrays.sort(b);
 
-        List<Integer> alist = new ArrayList(Arrays.asList(a));
-        int n=a.length,m=b.length;
+
         int sum_a=0,sum_b=0;
         double avg_a=0,avg_b=0;
 
@@ -57,6 +38,28 @@ public class Solution4 {
         }
         avg_a=(double)sum_a/(double)a.length;
         avg_b=(double)sum_b/(double)b.length;
+        //从均值大的数组移动到均值小的
+        if(avg_a>avg_b){
+            int temp[] = a;
+            a=b;
+            b=temp;
+        }
+
+        System.out.println(magic(a,b,avg_a,avg_b));
+
+    }
+
+    /**
+     * 只移动数组b中比均值小的，且比a的均值大的元素到数组a中
+     * 每移动一次，求一次新的均值
+     * @param a
+     * @param b
+     * @return
+     */
+    public static int magic(int[] a, int[] b,double avg_a,double avg_b) {
+
+        List<Integer> alist = new ArrayList(Arrays.asList(a));
+        int n=a.length,m=b.length;
 
         int times=0;
 
